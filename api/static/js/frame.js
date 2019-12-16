@@ -135,7 +135,7 @@ $(document).ready(() => {
     image: {preload: true},
     transitionEffect: 'fade',
     transitionDuration: 1000,
-    fullScreen: {autoStart: false},
+    fullScreen: {autoStart: true},
     // Automatically advance after 3s to next photo.
     slideShow: {autoStart: true, speed: 3000},
     // Display the contents figcaption element as the caption of an image

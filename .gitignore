@@ -1,2 +1,6 @@
 /api/node_modules
 *.log
+/api/config.js
+/api/sessions/*
+/api/persist-albumcache/*
+/api/persist-mediacache/*
