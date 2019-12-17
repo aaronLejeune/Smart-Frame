@@ -18,27 +18,28 @@
 function loadFromAlbum(name, id) {
   showLoadingDialog();
   // Make an ajax request to the backend to load from an album.
-  $.ajax({
-    type: 'POST',
-    url: '/loadFromAlbum',
-    dataType: 'json',
-    data: {albumId: id},
-    success: (data) => {
-      console.log('Albums imported:' + JSON.stringify(data.parameters));
-      if (data.photos && data.photos.length) {
-        // Photos were loaded from the album, open the photo frame preview
-        // queue.
-        window.location = '/';
-      } else {
-        // No photos were loaded. Display an error.
-        handleError('Couldn\'t import album', 'Album is empty.');
-      }
-      hideLoadingDialog();
-    },
-    error: (data) => {
-      handleError('Couldn\'t import album', data);
-    }
-  });
+
+      $.ajax({
+        type: 'POST',
+        url: '/loadFromAlbum',
+        dataType: 'json',
+        data: {albumId: id},
+        success: (data) => {
+          console.log('Albums imported:' + JSON.stringify(data.parameters));
+          if (data.photos && data.photos.length) {
+            // Photos were loaded from the album, open the photo frame preview
+            // queue.
+            window.location = '/';
+          } else {
+            // No photos were loaded. Display an error.
+            handleError('Couldn\'t import album', 'Album is empty.');
+          }
+          hideLoadingDialog();
+        },
+        error: (data) => {
+          handleError('Couldn\'t import album', data);
+        }
+      });  
 }
 
 // Loads a list of all albums owned by the logged in user from the backend.

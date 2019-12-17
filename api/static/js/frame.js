@@ -105,27 +105,32 @@ function showPreview(source, mediaItems) {
 // selected. They are rendered in showPreview(..).
 function loadQueue() {
   showLoadingDialog();
-  $.ajax({
-    type: 'GET',
-    url: '/getQueue',
-    dataType: 'json',
-    success: (data) => {
-      // Queue has been loaded. Display the media items as a grid on screen.
-      hideLoadingDialog();
-      showPreview(data.parameters, data.photos);
-      hideLoadingDialog();
-      console.log('Loaded queue.');
-    },
-    error: (data) => {
-      hideLoadingDialog();
-      handleError('Could not load queue', data)
-    }
-  });
+
+    $.ajax({
+      type: 'GET',
+      url: '/getQueue',
+      dataType: 'json',
+      success: (data) => {
+        // Queue has been loaded. Display the media items as a grid on screen.
+        hideLoadingDialog();
+        showPreview(data.parameters, data.photos);
+        hideLoadingDialog();
+        console.log('Loaded queue.');
+      },
+      error: (data) => {
+        hideLoadingDialog();
+        handleError('Could not load queue', data)
+      }
+    });
+    console.log("5sec.");
+
+
+  console.log("Requesting photos");
 }
 
 $(document).ready(() => {
   // Load the queue of photos selected by the user for the photo
-  loadQueue();
+        loadQueue();
 
   // Set up the fancybox image gallery.
   $().fancybox({
