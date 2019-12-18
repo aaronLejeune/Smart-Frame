@@ -82,7 +82,7 @@ function showPreview(source, mediaItems) {
                                .attr('alt', captionText)
                                .addClass('img-fluid rounded thumbnail');
     linkToFullImage.append(thumbnailImage);
-
+    
     // The caption consists of the caption text and a link to open the image
     // in Google Photos.
     const imageCaption =
@@ -97,6 +97,7 @@ function showPreview(source, mediaItems) {
     // Add the link (consisting of the thumbnail image and caption) to
     // container.
     $('#images-container').append(linkToFullImage);
+    $( 'img' ).click();
   });
 };
 
@@ -131,7 +132,10 @@ function loadQueue() {
 $(document).ready(() => {
   // Load the queue of photos selected by the user for the photo
         loadQueue();
-
+  // Reload page after x ms
+  setTimeout(function() {
+    location.reload();
+}, 20000);
   // Set up the fancybox image gallery.
   $().fancybox({
     selector: '[data-fancybox="gallery"]',
@@ -142,7 +146,7 @@ $(document).ready(() => {
     transitionDuration: 1000,
     fullScreen: {autoStart: true},
     // Automatically advance after 3s to next photo.
-    slideShow: {autoStart: true, speed: 3000},
+    slideShow: {autoStart: true, speed: 500},
     // Display the contents figcaption element as the caption of an image
     caption: function(instance, item) {
       return $(this).find('figcaption').html();
