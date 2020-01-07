@@ -97,7 +97,7 @@ function showPreview(source, mediaItems) {
     // Add the link (consisting of the thumbnail image and caption) to
     // container.
     $('#images-container').append(linkToFullImage);
-    $( 'img' ).click();
+    $('img').click();
   });
 };
 
@@ -134,8 +134,8 @@ $(document).ready(() => {
         loadQueue();
   // Reload page after x ms
   setTimeout(function() {
-    location.reload();
-}, 20000);
+    parent.$.fancybox.close();
+}, 5000);
   // Set up the fancybox image gallery.
   $().fancybox({
     selector: '[data-fancybox="gallery"]',
